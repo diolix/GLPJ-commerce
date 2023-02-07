@@ -15,14 +15,17 @@ public class Main {
         CommerceService commerceService = new CommerceService(dbC);
 
         JFrame frame = new JFrame("commerce");
-        frame.setVisible(true);
-        frame.setSize(1000,1000);
+        frame.setSize(300,350);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(new MainPannel(commerceService));
+        frame.setVisible(true);
 
         for (Item item : commerceService.getItems()) {
             System.out.println("id : " + item.getNum() + " descr : " + item.getDescription() + " prix : " + item.getPrix() + " client : " + item.getClient().getPrenom());
         }
 
+        commerceService.createClient("test");
+        Client clientTest = commerceService.getClient("test");
+        System.out.println(clientTest.getNum() + " " + clientTest.getPrenom() + " " + clientTest.getSolde());
     }
 }
